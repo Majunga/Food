@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentAssertions" Version="5.9.0" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.2.0" />
+    <PackageReference Include="Moq" Version="4.13.0" />
+    <PackageReference Include="xunit" Version="2.4.0" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.0" />
+    <PackageReference Include="coverlet.collector" Version="1.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Food.Dal\Food.Dal.csproj" />
+    <ProjectReference Include="..\..\Food.Service\Food.Service.csproj" />
+    <ProjectReference Include="..\..\Service.Conversion\Service.Conversion.csproj" />
+    <ProjectReference Include="..\..\srcs\Food.IService\Food.IService.csproj" />
+    <ProjectReference Include="..\..\srcs\Food.Service\Food.Service.csproj" />
+  </ItemGroup>
+
+</Project>

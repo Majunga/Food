@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <NullableReferenceTypes>enable</NullableReferenceTypes>
+    <LangVersion>8.0</LangVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj" />
+    <ProjectReference Include="..\Food.Dal\Food.Dal.csproj" />
+    <ProjectReference Include="..\Food.IService\Food.IService.csproj" />
+  </ItemGroup>
+
+</Project>

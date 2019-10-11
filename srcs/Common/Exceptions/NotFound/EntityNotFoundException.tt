@@ -1,0 +1,49 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+/*
+ * ==== THIS IS A GENERATED FILE ====
+ *  ===       DO NOT EDIT!       ===
+ *
+ * See the EntityNotFoundException.tt file
+ * In order to add a new "EntityNotFoundException", add the Entity's name to the
+ * "entities" array in EntityNotFoundException.tt file
+ *
+ */
+using System;
+using System.Runtime.Serialization;
+namespace Common.Exceptions.NotFound
+{
+
+<# 
+	var entities = new []
+	{
+	    "Request",
+	    "CommandHandler",
+		"QueryHandler",
+		"UserProfile",
+		"Workspace"
+	};
+	foreach (var entity in entities){
+		var exceptionName = string.Format("{0}NotFoundException", entity);
+#>
+    // Generated via EntityNotFoundException.tt
+    [Serializable]
+    public class <#= exceptionName #> : RecordNotFoundException
+    {
+        public <#= exceptionName #>() { }
+        public <#= exceptionName #>(int id) : base(id) { }
+		public <#= exceptionName #>(string message) : base(message) { }
+		public <#= exceptionName #>(string message, Exception inner) : base(message, inner) { }
+        protected <#= exceptionName #>(SerializationInfo info, StreamingContext context) : base(info, context) { }
+
+        public override string EntityType => "<#= entity #>";
+    }
+
+<#
+	}
+#>
+}

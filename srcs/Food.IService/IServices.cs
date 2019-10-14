@@ -1,6 +1,4 @@
-﻿using IService;
-
-namespace Food.Service
+﻿namespace Food.IService
 {
     public interface IServices
     {

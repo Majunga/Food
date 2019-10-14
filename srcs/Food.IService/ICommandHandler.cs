@@ -1,4 +1,4 @@
-﻿namespace IService
+﻿namespace Food.IService
 {
     public interface ICommandHandler<in TCommand>
     {

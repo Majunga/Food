@@ -1,8 +1,8 @@
 ﻿using Common.Conversion;
 using Food.Dal;
 using Food.Dal.Repositories;
+using Food.IService;
 using Food.Service;
-using IService;
 using Moq;
 using Service.Conversion;
 

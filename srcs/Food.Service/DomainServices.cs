@@ -5,7 +5,7 @@ using System.Threading;
 using Common.Conversion;
 using Common.Exceptions.NotFound;
 using Food.Dal;
-using IService;
+using Food.IService;
 
 namespace Food.Service
 {

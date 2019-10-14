@@ -1,18 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Text;
 using Common.DataTypes;
-using Common.EnumDataTypes;
 
-namespace Food.IService.IngredientHandlers.Commands
+namespace Food.IService.IngredientHandlers.Models
 {
-    public class CreateIngredientCommand
+    public class IngredientDto
     {
+        public int Id { get; set; }
+
         public string Name { get; set; }
 
         public IngredientQuantity Quantity { get; set; }
-
-        public int? Id { get; set; }
     }
 }

@@ -5,8 +5,8 @@ using System.Reflection;
 using System.Text;
 using Common.Conversion;
 using Food.Dal;
+using Food.IService;
 using Food.Service;
-using IService;
 using Microsoft.EntityFrameworkCore;
 using Xunit.Abstractions;
 

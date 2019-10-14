@@ -15,6 +15,6 @@ namespace Food.Dal.Models
         [Required]
         public QuantityType QuantityType { get; set; }
 
-        public virtual ICollection<Recipe> Recipes { get; set; }
+        public virtual ICollection<RecipeIngredient> RecipeIngredients { get; set; }
     }
 }

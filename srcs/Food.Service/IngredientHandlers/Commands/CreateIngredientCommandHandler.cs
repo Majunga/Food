@@ -1,6 +1,7 @@
 ﻿using System;
 using Common.Conversion;
 using Food.Dal;
+using Food.Dal.Models;
 using Food.IService.IngredientHandlers.Commands;
 
 namespace Food.Service.IngredientHandlers.Commands
@@ -13,7 +14,13 @@ namespace Food.Service.IngredientHandlers.Commands
 
         public override void Handle(CreateIngredientCommand command)
         {
-            throw new NotImplementedException();
+            var entity = this.Convert<Ingredient>(command);
+
+            this.UnitOfWork.IngredientRepository.Create(entity);
+
+            this.UnitOfWork.SaveChanges();
+
+            command.Id = entity.Id;
         }
     }
 }

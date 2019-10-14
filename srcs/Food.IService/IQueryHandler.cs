@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace IService
+﻿namespace Food.IService
 {
     public interface IQueryHandler<in TQuery, out TResult>
     {

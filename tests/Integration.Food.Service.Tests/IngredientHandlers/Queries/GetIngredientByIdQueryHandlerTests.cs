@@ -7,9 +7,9 @@ using Xunit.Abstractions;
 
 namespace Integration.Food.Service.Tests.IngredientHandlers.Queries
 {
-    public class GetIngredientByIdQueryTests : IngredientTestBase
+    public class GetIngredientByIdQueryHandlerTests : IngredientTestBase
     {
-        public GetIngredientByIdQueryTests(ITestOutputHelper output) : base(output)
+        public GetIngredientByIdQueryHandlerTests(ITestOutputHelper output) : base(output)
         {
         }
 

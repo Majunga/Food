@@ -1,9 +1,9 @@
 ﻿using System;
 using Common.Conversion;
 using Food.Dal;
-using Food.IService.IngredientHandlers.Command;
+using Food.IService.IngredientHandlers.Commands;
 
-namespace Food.Service.IngredientHandlers.Command
+namespace Food.Service.IngredientHandlers.Commands
 {
     public class CreateIngredientCommandHandler : CommandHandlerBase<CreateIngredientCommand>
     {

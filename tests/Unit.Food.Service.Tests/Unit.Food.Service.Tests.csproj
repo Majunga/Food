@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.0</TargetFramework>
-
+    <LangVersion>8.0</LangVersion>
     <IsPackable>false</IsPackable>
   </PropertyGroup>
 
@@ -16,11 +16,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Food.Dal\Food.Dal.csproj" />
-    <ProjectReference Include="..\..\Food.Service\Food.Service.csproj" />
-    <ProjectReference Include="..\..\Service.Conversion\Service.Conversion.csproj" />
     <ProjectReference Include="..\..\srcs\Food.IService\Food.IService.csproj" />
     <ProjectReference Include="..\..\srcs\Food.Service\Food.Service.csproj" />
+    <ProjectReference Include="..\..\srcs\Service.Conversion\Service.Conversion.csproj" />
   </ItemGroup>
+
 
 </Project>

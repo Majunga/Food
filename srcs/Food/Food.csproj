@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.0</TargetFramework>
+    <NullableReferenceTypes>enable</NullableReferenceTypes>
     <LangVersion>8.0</LangVersion>
     <UserSecretsId>aspnet-Food-CF3B31E8-8156-4FC6-BF3B-DA6A6DA87DE9</UserSecretsId>
   </PropertyGroup>

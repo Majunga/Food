@@ -21,7 +21,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common.Tests", "tests\Commo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Service.Conversion", "srcs\Service.Conversion\Service.Conversion.csproj", "{AF352962-F8FA-482F-800B-BAAA50AE62FE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Integration.Food.Service.Tests", "tests\Integration.Food.Service.Tests\Integration.Food.Service.Tests.csproj", "{1871EBF2-62DF-43E1-B261-2806F9976B0F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Integration.Food.Service.Tests", "tests\Integration.Food.Service.Tests\Integration.Food.Service.Tests.csproj", "{1871EBF2-62DF-43E1-B261-2806F9976B0F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

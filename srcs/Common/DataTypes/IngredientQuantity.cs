@@ -12,5 +12,10 @@ namespace Common.DataTypes
 
         public decimal Quantity { get; }
         public QuantityType QuantityType { get; }
+
+        public override string ToString()
+        {
+            return $"{Quantity}{QuantityType}";
+        }
     }
 }

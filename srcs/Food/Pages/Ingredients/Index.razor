@@ -1,0 +1,37 @@
+﻿@page "/Ingredients"
+
+@using Common.Conversion
+@using Food.IService
+@using Food.IService.IngredientHandlers.Commands
+@using Food.Models.Ingredients
+@using Majunga.BlazorModal
+@inject IServices DomainServices
+@inject IConversionService Conversion
+@inject ModalService ModalService
+<h3>Index</h3>
+
+
+@code
+{
+    IngredientViewModel createViewModel = new IngredientViewModel();
+
+    public void HandleValidSubmit()
+    {
+        DomainServices.RunCommand(this.Conversion.Convert(createViewModel, typeof(CreateIngredientCommand)));
+    }
+
+    void ToggleModalVisibility()
+    {
+        ModalService.ToggleVisibility();
+    }
+}
+
+<button class="btn btn-primary" @onclick="@ToggleModalVisibility">Create</button>
+
+<Modal Title="Create/Update Ingredient" SaveHandler="@HandleValidSubmit">
+    <EditForm Model="@createViewModel" OnValidSubmit="@HandleValidSubmit">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+        
+    </EditForm>
+</Modal>

@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Common.DataTypes;
-using Common.EnumDataTypes;
 using Food.IService.IngredientHandlers.Commands;
 
 namespace Integration.Food.Service.Tests.IngredientHandlers

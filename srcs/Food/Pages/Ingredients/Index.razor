@@ -4,7 +4,7 @@
 @using Food.IService
 @using Food.IService.IngredientHandlers.Commands
 @using Food.Models.Ingredients
-@using Majunga.BlazorModal
+@using Majunga.RazorModal
 @inject IServices DomainServices
 @inject IConversionService Conversion
 @inject ModalService ModalService
@@ -13,25 +13,30 @@
 
 @code
 {
-    IngredientViewModel createViewModel = new IngredientViewModel();
+    IngredientViewModel Model = new IngredientViewModel();
+
+    string ModelType = "Create ingredient";
 
     public void HandleValidSubmit()
     {
-        DomainServices.RunCommand(this.Conversion.Convert(createViewModel, typeof(CreateIngredientCommand)));
+        var command = DomainServices.Convert<CreateIngredientCommand>(Model);
+        DomainServices.RunCommand(command);
+        ModalService.Hide();
     }
 
-    void ToggleModalVisibility()
+    void ToggleModalVisibility(string buttonClicked)
     {
+        ModelType = $"{buttonClicked} ingredient";
         ModalService.ToggleVisibility();
     }
 }
 
-<button class="btn btn-primary" @onclick="@ToggleModalVisibility">Create</button>
+<button class="btn btn-primary" @onclick="@(e => ToggleModalVisibility("Create"))">Create</button>
 
-<Modal Title="Create/Update Ingredient" SaveHandler="@HandleValidSubmit">
-    <EditForm Model="@createViewModel" OnValidSubmit="@HandleValidSubmit">
+<EditForm Model="@Model" OnValidSubmit="@HandleValidSubmit">
+    <Modal Title="@ModelType">
         <DataAnnotationsValidator />
         <ValidationSummary />
-        
-    </EditForm>
-</Modal>
+        <InputText class="form-control" placeholder="Enter ingredient name.." @bind-Value="Model.Name" />
+    </Modal>
+</EditForm>

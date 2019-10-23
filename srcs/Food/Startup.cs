@@ -12,7 +12,7 @@ using Food.Areas.Identity;
 using Food.Dal;
 using Food.IService;
 using Food.Service;
-using Majunga.BlazorModal;
+using Majunga.RazorModal;
 using Service.Conversion;
 
 namespace Food
@@ -31,7 +31,8 @@ namespace Food
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<DataContext>(options =>
-                options.UseSqlServer(this.Configuration.GetConnectionString("DefaultConnection")));
+                //options.UseSqlServer(this.Configuration.GetConnectionString("DefaultConnection")));
+                options.UseInMemoryDatabase("Test"));
 
             services.AddSingleton<IMapper>(new ConversionConfiguration().MapperConfig.CreateMapper());
             services.AddSingleton<IConversionService, AutoMapperConversionService>();

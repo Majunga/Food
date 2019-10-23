@@ -1,20 +1,19 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using AutoMapper;
+using Common.Conversion;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Food.Areas.Identity;
-using Food.Data;
+using Food.Dal;
+using Food.IService;
+using Food.Service;
+using Majunga.RazorModal;
+using Service.Conversion;
 
 namespace Food
 {
@@ -31,15 +30,27 @@ namespace Food
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<DataContext>(options =>
+                //options.UseSqlServer(this.Configuration.GetConnectionString("DefaultConnection")));
+                options.UseInMemoryDatabase("Test"));
+
+            services.AddSingleton<IMapper>(new ConversionConfiguration().MapperConfig.CreateMapper());
+            services.AddSingleton<IConversionService, AutoMapperConversionService>();
+
+            services.AddScoped<IUnitOfWork>(o => new UnitOfWork(o.GetService<DataContext>(), o.GetService<IConversionService>()));
+
+            services.AddScoped<IServices, DomainServices>();
+
             services.AddDefaultIdentity<IdentityUser>()
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+                .AddEntityFrameworkStores<DataContext>();
+
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<IdentityUser>>();
-            services.AddSingleton<WeatherForecastService>();
+
+            // Razor Components
+            services.AddScoped<ModalService>();
+            services.AddScoped<IModalService, ModalService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

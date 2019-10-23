@@ -10,7 +10,5 @@ namespace Food.IService.IngredientHandlers.Models
         public int Id { get; set; }
 
         public string Name { get; set; }
-
-        public IngredientQuantity Quantity { get; set; }
     }
 }

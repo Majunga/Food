@@ -11,8 +11,6 @@ namespace Food.IService.IngredientHandlers.Commands
     {
         public string Name { get; set; }
 
-        public IngredientQuantity Quantity { get; set; }
-
         public int? Id { get; set; }
     }
 }

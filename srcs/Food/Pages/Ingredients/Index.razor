@@ -1,0 +1,34 @@
+﻿@page "/Ingredients"
+
+@using Majunga.RazorModal
+@inherits IndexBase
+<h3>Ingredients</h3>
+
+<button class="btn btn-primary" @onclick="@(e => ShowModal("Create"))">Create</button>
+
+<Grid>
+    <GridHeader>
+        <th scope="col" @onclick="@(() => Reorder())">Name</th>
+        <th scope="col">Actions</th>
+    </GridHeader>
+    <GridBody>
+        @foreach (var ingredient in this.ingredients)
+        {
+            <tr>
+                <td>@ingredient.Name</td>
+                <td>
+                    <button class="btn btn-primary" @onclick="@(e => ShowModal("Edit", ingredient.Id))">Update</button>
+                    <button class="btn btn-primary" @onclick="@(e => DeleteIngredient(ingredient.Id.Value))">Delete</button>
+                </td>
+            </tr>
+        }
+    </GridBody>
+</Grid>
+
+<EditForm Model="@Model" OnValidSubmit="@SaveModal">
+    <Modal Title="@ModalTitle">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+        <InputText class="form-control" placeholder="Enter ingredient name.." @bind-Value="Model.Name" />
+    </Modal>
+</EditForm>

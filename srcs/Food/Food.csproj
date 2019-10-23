@@ -8,19 +8,28 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Majunga.RazorModal" Version="1.0.871" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="3.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="3.0.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.0.0" />
+    <PackageReference Include="Microsoft.Web.LibraryManager.Build" Version="2.0.96" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj" />
     <ProjectReference Include="..\Food.Dal\Food.Dal.csproj" />
     <ProjectReference Include="..\Food.IService\Food.IService.csproj" />
+    <ProjectReference Include="..\Food.Models\Food.Models.csproj" />
     <ProjectReference Include="..\Food.Service\Food.Service.csproj" />
     <ProjectReference Include="..\Service.Conversion\Service.Conversion.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Update="Shared\GridHeader - Copy.razor" />
+  </ItemGroup>
 </Project>

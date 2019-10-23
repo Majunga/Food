@@ -18,6 +18,7 @@
                 <td>@ingredient.Name</td>
                 <td>
                     <button class="btn btn-primary" @onclick="@(e => ShowModal("Edit", ingredient.Id))">Update</button>
+                    <button class="btn btn-primary" @onclick="@(e => DeleteIngredient(ingredient.Id.Value))">Delete</button>
                 </td>
             </tr>
         }

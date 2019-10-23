@@ -69,6 +69,13 @@ namespace Food.Pages.Ingredients
             ModalService.Hide();
         }
 
+        public void DeleteIngredient(int ingredientId)
+        {
+            this.DomainServices.RunCommand(new DeleteIngredientCommand(ingredientId));
+
+            this.LoadIngredientsList();
+        }
+
         #region list ordering
 
         private bool asc = true;

@@ -78,7 +78,7 @@ namespace Unit.Food.Tests.Pages.Ingredients
         //}
 
         [Fact]
-        public void SaveModal_ShouldSave()
+        public void CreateIngredient_ShouldSave()
         {
             // arrange
             var sut = CreateSut();
@@ -93,7 +93,7 @@ namespace Unit.Food.Tests.Pages.Ingredients
         }
 
         [Fact]
-        public void UpdateModal_ShouldSave()
+        public void UpdateIngredient_ShouldSave()
         {
             // arrange
             var sut = CreateSut();
@@ -104,6 +104,20 @@ namespace Unit.Food.Tests.Pages.Ingredients
 
             // act
             sut.SaveModal();
+
+            // assert
+            this.MockDomainServices.Verify();
+        }
+
+        [Fact]
+        public void DeleteIngredient_ShouldSave()
+        {
+            // arrange
+            var sut = CreateSut();
+            this.MockDomainServices.Setup(m => m.RunCommand<DeleteIngredientCommand>(It.IsAny<DeleteIngredientCommand>())).Verifiable();
+
+            // act
+            sut.DeleteIngredient(int.MaxValue);
 
             // assert
             this.MockDomainServices.Verify();

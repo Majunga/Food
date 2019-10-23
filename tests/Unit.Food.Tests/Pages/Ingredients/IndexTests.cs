@@ -93,6 +93,23 @@ namespace Unit.Food.Tests.Pages.Ingredients
         }
 
         [Fact]
+        public void UpdateModal_ShouldSave()
+        {
+            // arrange
+            var sut = CreateSut();
+            this.MockDomainServices.Setup(m => m.Convert<UpdateIngredientCommand>(It.IsAny<IngredientViewModel>())).Verifiable();
+            this.MockDomainServices.Setup(m => m.RunCommand(It.IsAny<UpdateIngredientCommand>())).Verifiable();
+
+            sut.xModel = new IngredientViewModel{Id = 1};
+
+            // act
+            sut.SaveModal();
+
+            // assert
+            this.MockDomainServices.Verify();
+        }
+
+        [Fact]
         public void Reorder_ShouldOrderIngredientsCorrectly()
         {
             // arrange
@@ -177,6 +194,8 @@ namespace Unit.Food.Tests.Pages.Ingredients
 
     public class IndexWrapper : IndexBase
     {
+        internal IngredientViewModel xModel { get => base.Model; set => base.Model = value; }
+
         public ModalService xModalService { get => base.ModalService; set => base.ModalService = value; }
         public IServices xDomainServices { get => base.DomainServices; set => base.DomainServices = value; }
 

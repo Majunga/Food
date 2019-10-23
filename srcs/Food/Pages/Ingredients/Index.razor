@@ -16,7 +16,9 @@
         {
             <tr>
                 <td>@ingredient.Name</td>
-                <td></td>
+                <td>
+                    <button class="btn btn-primary" @onclick="@(e => ShowModal("Edit", ingredient.Id))">Update</button>
+                </td>
             </tr>
         }
     </GridBody>

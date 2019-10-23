@@ -33,17 +33,35 @@ namespace Food.Pages.Ingredients
             OrderBy(ingredientViews, asc);
         }
 
-        
-        public void ShowModal(string buttonClicked)
+
+        public void ShowModal(string buttonClicked, int? existingId = null)
         {
+            if (existingId.HasValue)
+            {
+                var dto = this.DomainServices.RunQuery(new GetIngredientByIdQuery(existingId.Value));
+                this.DomainServices.Map(dto, this.Model); // need to map, as replacing causes the EditForm to not load
+            }
+            else
+            {
+                this.DomainServices.Map(new IngredientViewModel(), this.Model);
+            }
+
             ModalTitle = $"{buttonClicked} ingredient";
             ModalService.Show();
         }
 
         public void SaveModal()
         {
-            var command = DomainServices.Convert<CreateIngredientCommand>(Model);
-            DomainServices.RunCommand(command);
+            if (this.Model.Id.HasValue)
+            {
+                var command = DomainServices.Convert<UpdateIngredientCommand>(Model);
+                DomainServices.RunCommand(command);
+            }
+            else
+            {
+                var command = DomainServices.Convert<CreateIngredientCommand>(Model);
+                DomainServices.RunCommand(command);
+            }
 
             LoadIngredientsList();
             Model = new IngredientViewModel();
@@ -62,7 +80,7 @@ namespace Food.Pages.Ingredients
 
         private void OrderBy(IEnumerable<IngredientViewModel> ingredientViews, bool ascending)
         {
-            if(ingredientViews == null) return;
+            if (ingredientViews == null) return;
 
             if (ascending)
             {

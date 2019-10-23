@@ -11,9 +11,12 @@ namespace Service.Conversion
         public IngredientServiceMapper()
         {
             CreateMap<CreateIngredientCommand, Ingredient>();
-            CreateMap<Ingredient, IngredientDto>();
             CreateMap<IngredientViewModel, CreateIngredientCommand>();
+
+            CreateMap<Ingredient, IngredientDto>();
             CreateMap<IngredientDto, IngredientViewModel>();
+
+            CreateMap<UpdateIngredientCommand, Ingredient>();
         }
     }
 }

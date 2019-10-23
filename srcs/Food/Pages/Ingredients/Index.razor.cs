@@ -56,13 +56,15 @@ namespace Food.Pages.Ingredients
         private bool asc = true;
         public void Reorder()
         {
-            OrderBy(this.ingredients, asc);
             asc = !asc;
+            OrderBy(this.ingredients, asc);
         }
 
-        private void OrderBy(IEnumerable<IngredientViewModel> ingredientViews, bool asc)
+        private void OrderBy(IEnumerable<IngredientViewModel> ingredientViews, bool ascending)
         {
-            if (asc)
+            if(ingredientViews == null) return;
+
+            if (ascending)
             {
                 this.ingredients = ingredientViews.OrderBy(m => m.Name);
             }

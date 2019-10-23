@@ -44,10 +44,13 @@ namespace Food
             services.AddDefaultIdentity<IdentityUser>()
                 .AddEntityFrameworkStores<DataContext>();
 
-            services.AddBlazorModal();
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<IdentityUser>>();
+
+            // Razor Components
+            services.AddScoped<ModalService>();
+            services.AddScoped<IModalService, ModalService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

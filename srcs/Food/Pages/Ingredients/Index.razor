@@ -1,40 +1,29 @@
 ﻿@page "/Ingredients"
 
-@using Common.Conversion
-@using Food.IService
-@using Food.IService.IngredientHandlers.Commands
-@using Food.Models.Ingredients
 @using Majunga.RazorModal
-@inject IServices DomainServices
-@inject IConversionService Conversion
-@inject ModalService ModalService
-<h3>Index</h3>
+@inherits IndexBase
+<h3>Ingredients</h3>
 
+<button class="btn btn-primary" @onclick="@(e => ShowModal("Create"))">Create</button>
 
-@code
-{
-    IngredientViewModel Model = new IngredientViewModel();
+<Grid>
+    <GridHeader>
+        <th scope="col" @onclick="@(() => Reorder())">Name</th>
+        <th scope="col">Actions</th>
+    </GridHeader>
+    <GridBody>
+        @foreach (var ingredient in this.ingredients)
+        {
+            <tr>
+                <td>@ingredient.Name</td>
+                <td></td>
+            </tr>
+        }
+    </GridBody>
+</Grid>
 
-    string ModelType = "Create ingredient";
-
-    public void HandleValidSubmit()
-    {
-        var command = DomainServices.Convert<CreateIngredientCommand>(Model);
-        DomainServices.RunCommand(command);
-        ModalService.Hide();
-    }
-
-    void ToggleModalVisibility(string buttonClicked)
-    {
-        ModelType = $"{buttonClicked} ingredient";
-        ModalService.ToggleVisibility();
-    }
-}
-
-<button class="btn btn-primary" @onclick="@(e => ToggleModalVisibility("Create"))">Create</button>
-
-<EditForm Model="@Model" OnValidSubmit="@HandleValidSubmit">
-    <Modal Title="@ModelType">
+<EditForm Model="@Model" OnValidSubmit="@SaveModal">
+    <Modal Title="@ModalTitle">
         <DataAnnotationsValidator />
         <ValidationSummary />
         <InputText class="form-control" placeholder="Enter ingredient name.." @bind-Value="Model.Name" />

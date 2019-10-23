@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Majunga.RazorModal" Version="1.0.871" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.0.0" />
@@ -29,9 +30,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="Majunga.RazorModal">
-      <HintPath>..\..\..\RazorComponents\src\Majunga.RazorModal\bin\Debug\netstandard2.1\Majunga.RazorModal.dll</HintPath>
-    </Reference>
+    <Content Update="Shared\GridHeader - Copy.razor" />
   </ItemGroup>
-
 </Project>

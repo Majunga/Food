@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
-using Common.DataTypes;
 using Food.Dal.Models;
 using Food.IService.IngredientHandlers.Commands;
 using Food.IService.IngredientHandlers.Models;
+using Food.Models.Ingredients;
 
 namespace Service.Conversion
 {
@@ -12,7 +12,7 @@ namespace Service.Conversion
         {
             CreateMap<CreateIngredientCommand, Ingredient>();
             CreateMap<Ingredient, IngredientDto>();
-
+            CreateMap<IngredientViewModel, CreateIngredientCommand>();
         }
     }
 }

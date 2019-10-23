@@ -55,5 +55,16 @@ namespace Food.Service
 
             return handler.Handle((dynamic)query);
         }
+
+        
+        public T Convert<T>(object source)
+        {
+            return (T)this._converter.Convert(source, typeof(T));
+        }
+
+        public void Map(object source, object target)
+        {
+            this._converter.Map(source, target);
+        }
     }
 }

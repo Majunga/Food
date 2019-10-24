@@ -12,4 +12,8 @@
     <ProjectReference Include="..\Food.IService\Food.IService.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="RecipeHandlers\Queries\" />
+  </ItemGroup>
+
 </Project>

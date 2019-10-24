@@ -27,4 +27,8 @@
     <ProjectReference Include="..\..\srcs\Service.Conversion\Service.Conversion.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="RecipeHandlers\Queries\" />
+  </ItemGroup>
+
 </Project>

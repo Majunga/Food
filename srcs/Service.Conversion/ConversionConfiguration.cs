@@ -12,6 +12,7 @@ namespace Service.Conversion
             m =>
                 {
                     m.AddProfile(new IngredientServiceMapper());
+                    m.AddProfile(new RecipeServiceMapper());
                 });
     }
 }

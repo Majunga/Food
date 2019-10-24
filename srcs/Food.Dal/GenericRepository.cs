@@ -59,6 +59,9 @@ namespace Food.Dal
         public virtual void Delete(TKey id)
         {
             var entity = this.Read(id);
+
+            if(entity == null) return;
+
             DbSet.Remove(entity);
         }
     }

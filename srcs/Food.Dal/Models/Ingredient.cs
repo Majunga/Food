@@ -7,7 +7,5 @@ namespace Food.Dal.Models
     {
         [Required]
         public string Name { get; set; }
-
-        public virtual ICollection<RecipeIngredient> RecipeIngredients { get; set; }
     }
 }

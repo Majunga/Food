@@ -10,7 +10,7 @@ namespace Food.Dal
         internal readonly DbContext Context;
         private readonly IConversionService _conversionService;
         private IIngredientRepository _ingredientRepository;
-
+        private RecipeRepository _recipeRepository;
 
         public UnitOfWork(DbContext context, IConversionService conversionService)
         {
@@ -25,6 +25,7 @@ namespace Food.Dal
         }
 
         public IIngredientRepository IngredientRepository => _ingredientRepository ??= new IngredientRepository(this.Context);
+        public IRecipeRepository RecipeRepository => _recipeRepository ??= new RecipeRepository(this.Context);
 
         public int SaveChanges()
         {

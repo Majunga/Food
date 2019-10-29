@@ -1,5 +1,6 @@
 ﻿using FluentAssertions;
 using Food.IService.RecipeHandlers.Commands;
+using Food.IService.RecipeHandlers.Queries;
 using System;
 using System.ComponentModel.DataAnnotations;
 using Xunit;
@@ -38,6 +39,10 @@ namespace Integration.Food.Service.Tests.RecipeHandlers.Commands
             // assert
             command.Id.Should().HaveValue();
             command.Id.Should().BeGreaterThan(0);
+
+            var actual = this.RunQuery(new GetRecipeByIdQuery(command.Id.Value));
+
+            actual.Should().BeEquivalentTo(command);
         }
     }
 }

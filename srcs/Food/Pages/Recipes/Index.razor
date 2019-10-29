@@ -1,0 +1,21 @@
+﻿@page "/Recipes"
+
+@inherits IndexBase
+<h3>Recipes</h3>
+
+<Grid>
+    <GridHeader>
+        <th scope="col" @onclick="@(() => Reorder())">Name</th>
+        <th scope="col">Actions</th>
+    </GridHeader>
+    <GridBody>
+        @foreach (var recipe in this.recipes)
+        {
+            <tr>
+                <td>@recipe.Name</td>
+                <td>
+                </td>
+            </tr>
+        }
+    </GridBody>
+</Grid>

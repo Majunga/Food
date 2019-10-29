@@ -2,6 +2,7 @@
 using Food.Dal.Models;
 using Food.IService.RecipeHandlers.Commands;
 using Food.IService.RecipeHandlers.Models;
+using Food.Models.Recipes;
 
 namespace Service.Conversion
 {
@@ -11,6 +12,7 @@ namespace Service.Conversion
         {
             CreateMap<CreateRecipeCommand, Recipe>();
             CreateMap<Recipe, RecipeDto>();
+            CreateMap<RecipeDto, RecipeViewModel>();
         }
     }
 }

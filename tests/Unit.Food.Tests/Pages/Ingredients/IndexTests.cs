@@ -5,33 +5,18 @@ using Food.IService.IngredientHandlers.Commands;
 using Food.IService.IngredientHandlers.Models;
 using Food.IService.IngredientHandlers.Queries;
 using Food.Models.Ingredients;
-using Food.Pages.Ingredients;
 using Majunga.RazorModal;
 using Moq;
 using Service.Conversion;
 using System;
 using System.Collections.Generic;
-using System.Linq;
+using Unit.Food.Tests.ExposedPageModels.Ingredients;
 using Xunit;
 
 namespace Unit.Food.Tests.Pages.Ingredients
 {
-    public class IndexTests
+    public class IndexTests : PageTestBase
     {
-        public IndexTests()
-        {
-            this.MockModalService = new Mock<ModalService>();
-            this.MockDomainServices = new Mock<IServices>();
-
-            var mapper = new ConversionConfiguration().MapperConfig.CreateMapper();
-            this.Converter = new AutoMapperConversionService(mapper);
-
-        }
-
-        public Mock<ModalService> MockModalService { get; private set; }
-        public Mock<IServices> MockDomainServices { get; private set; }
-        public AutoMapperConversionService Converter { get; }
-
         [Fact]
         public void LoadIngredients_OnInitialized()
         {
@@ -114,7 +99,7 @@ namespace Unit.Food.Tests.Pages.Ingredients
         {
             // arrange
             var sut = CreateSut();
-            this.MockDomainServices.Setup(m => m.RunCommand<DeleteIngredientCommand>(It.IsAny<DeleteIngredientCommand>())).Verifiable();
+            this.MockDomainServices.Setup(m => m.RunCommand(It.IsAny<DeleteIngredientCommand>())).Verifiable();
 
             // act
             sut.DeleteIngredient(int.MaxValue);
@@ -193,32 +178,6 @@ namespace Unit.Food.Tests.Pages.Ingredients
             sut.xDomainServices = this.MockDomainServices.Object;
 
             return sut;
-        }
-
-        protected T Convert<T>(object source)
-        {
-            return (T)this.Converter.Convert(source, typeof(T));
-        }
-
-        protected void Map(object source, object target)
-        {
-            this.Converter.Map(source, target);
-        }
-    }
-
-    public class IndexWrapper : IndexBase
-    {
-        internal IngredientViewModel xModel { get => base.Model; set => base.Model = value; }
-
-        public ModalService xModalService { get => base.ModalService; set => base.ModalService = value; }
-        public IServices xDomainServices { get => base.DomainServices; set => base.DomainServices = value; }
-
-        public IEnumerable<IngredientViewModel> Ingredients => base.ingredients;
-        public string xModalTitle => base.ModalTitle;
-
-        public void xOnInitialized()
-        {
-            base.OnInitialized();
         }
     }
 }

@@ -14,6 +14,7 @@ namespace Unit.Food.Service.Tests
         public AutoMapperConversionService Converter { get; }
         protected Mock<IUnitOfWork> MockUnitOfWork { get; }
         public Mock<IIngredientRepository> MockIngredientRepository { get; }
+        public Mock<IRecipeRepository> MockRecipeRepository { get; }
 
         public ServiceTestBase()
         {
@@ -22,8 +23,10 @@ namespace Unit.Food.Service.Tests
 
             this.MockUnitOfWork = new Mock<IUnitOfWork>();
             this.MockIngredientRepository = new Mock<IIngredientRepository>();
+            this.MockRecipeRepository = new Mock<IRecipeRepository>();
 
             this.MockUnitOfWork.SetupGet(m => m.IngredientRepository).Returns(() => this.MockIngredientRepository.Object);
+            this.MockUnitOfWork.SetupGet(m => m.RecipeRepository).Returns(() => this.MockRecipeRepository.Object);
 
             this.DomainServices = new DomainServices(this.MockUnitOfWork.Object, this.Converter);
         }

@@ -21,9 +21,10 @@ namespace Common.Exceptions.NotFound
 <# 
 	var entities = new []
 	{
-	    "Ingredient",
 	    "CommandHandler",
 		"QueryHandler",
+	    "Ingredient",
+		"Recipe",
 	};
 	foreach (var entity in entities){
 		var exceptionName = string.Format("{0}NotFoundException", entity);

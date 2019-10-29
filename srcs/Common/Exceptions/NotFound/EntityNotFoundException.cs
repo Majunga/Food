@@ -14,19 +14,6 @@ namespace Common.Exceptions.NotFound
 
     // Generated via EntityNotFoundException.tt
     [Serializable]
-    public class IngredientNotFoundException : RecordNotFoundException
-    {
-        public IngredientNotFoundException() { }
-        public IngredientNotFoundException(int id) : base(id) { }
-		public IngredientNotFoundException(string message) : base(message) { }
-		public IngredientNotFoundException(string message, Exception inner) : base(message, inner) { }
-        protected IngredientNotFoundException(SerializationInfo info, StreamingContext context) : base(info, context) { }
-
-        public override string EntityType => "Ingredient";
-    }
-
-    // Generated via EntityNotFoundException.tt
-    [Serializable]
     public class CommandHandlerNotFoundException : RecordNotFoundException
     {
         public CommandHandlerNotFoundException() { }
@@ -49,6 +36,32 @@ namespace Common.Exceptions.NotFound
         protected QueryHandlerNotFoundException(SerializationInfo info, StreamingContext context) : base(info, context) { }
 
         public override string EntityType => "QueryHandler";
+    }
+
+    // Generated via EntityNotFoundException.tt
+    [Serializable]
+    public class IngredientNotFoundException : RecordNotFoundException
+    {
+        public IngredientNotFoundException() { }
+        public IngredientNotFoundException(int id) : base(id) { }
+		public IngredientNotFoundException(string message) : base(message) { }
+		public IngredientNotFoundException(string message, Exception inner) : base(message, inner) { }
+        protected IngredientNotFoundException(SerializationInfo info, StreamingContext context) : base(info, context) { }
+
+        public override string EntityType => "Ingredient";
+    }
+
+    // Generated via EntityNotFoundException.tt
+    [Serializable]
+    public class RecipeNotFoundException : RecordNotFoundException
+    {
+        public RecipeNotFoundException() { }
+        public RecipeNotFoundException(int id) : base(id) { }
+		public RecipeNotFoundException(string message) : base(message) { }
+		public RecipeNotFoundException(string message, Exception inner) : base(message, inner) { }
+        protected RecipeNotFoundException(SerializationInfo info, StreamingContext context) : base(info, context) { }
+
+        public override string EntityType => "Recipe";
     }
 
 }

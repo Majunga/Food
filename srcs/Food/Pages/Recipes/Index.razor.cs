@@ -46,23 +46,39 @@ namespace Food.Pages.Recipes
         #region list ordering
 
         private bool asc = true;
-        public void Reorder()
+        public void Reorder(string columnName)
         {
             asc = !asc;
-            OrderBy(recipes, asc);
+            OrderBy(recipes, asc, columnName);
         }
 
-        private void OrderBy(IEnumerable<RecipeViewModel> recipeViews, bool ascending)
+        private void OrderBy(IEnumerable<RecipeViewModel> recipeViews, bool ascending, string columnName = nameof(RecipeViewModel.Name))
         {
             if (recipeViews == null) return;
 
             if (ascending)
             {
-                recipes = recipeViews.OrderBy(m => m.Name);
+                if (columnName == nameof(RecipeViewModel.Name))
+                {
+                    recipes = recipeViews.OrderBy(m => m.Name);
+                }
+
+                if (columnName == nameof(RecipeViewModel.Description))
+                {
+                    recipes = recipeViews.OrderBy(m => m.Description);
+                }
             }
             else
             {
-                recipes = recipeViews.OrderByDescending(m => m.Name);
+                if (columnName == nameof(RecipeViewModel.Name))
+                {
+                    recipes = recipeViews.OrderByDescending(m => m.Name);
+                }
+
+                if (columnName == nameof(RecipeViewModel.Description))
+                {
+                    recipes = recipeViews.OrderBy(m => m.Description);
+                }
             }
         }
 

@@ -1,6 +1,6 @@
 ﻿@page "/Recipes"
 
-@using Majunga.RazorModal
+@using Food.Models.Recipes
 @inherits IndexBase
 <h3>Recipes</h3>
 
@@ -9,18 +9,20 @@
 
 <Grid>
     <GridHeader>
-        <th scope="col" @onclick="@(() => Reorder())">Name</th>
+        <th scope="col" @onclick="@(() => Reorder(nameof(RecipeViewModel.Name)))">Name</th>
+        <th scope="col" @onclick="@(() => Reorder(nameof(RecipeViewModel.Description)))">Description</th>
         <th scope="col">Actions</th>
     </GridHeader>
     <GridBody>
         @foreach (var recipe in this.recipes)
         {
-            <tr>
-                <td>@recipe.Name</td>
-                <td>
-                    <button class="btn btn-primary" @onclick="() => GotoEditPage(recipe.Id)">Edit</button>
-                </td>
-            </tr>
+        <tr>
+            <td>@recipe.Name</td>
+            <td>@recipe.Description</td>
+            <td>
+                <button class="btn btn-primary" @onclick="() => GotoEditPage(recipe.Id)">Edit</button>
+            </td>
+        </tr>
         }
     </GridBody>
 </Grid>

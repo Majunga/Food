@@ -1,0 +1,19 @@
+﻿@page "/Recipes/Edit"
+@inherits EditBase
+<h3>@Title</h3>
+
+<EditForm Model="@Model" OnValidSubmit="@Save">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="form-group">
+        <label for="Name">Name</label>
+        <InputText @bind-Value="Model.Name" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label for="Description">Description</label>
+        <InputText @bind-Value="Model.Description" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+</EditForm>

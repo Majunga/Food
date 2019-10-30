@@ -1,7 +1,11 @@
 ﻿@page "/Recipes"
 
+@using Majunga.RazorModal
 @inherits IndexBase
 <h3>Recipes</h3>
+
+
+<button class="btn btn-primary" @onclick="GotoEditPage">Create</button>
 
 <Grid>
     <GridHeader>

@@ -34,7 +34,7 @@ namespace Unit.Food.Tests.Pages.Recipes
             sut.Recipes.Should().NotBeEmpty();
             sut.Recipes.Should().BeEquivalentTo(expected);
         }
-
+        
         private void MockOnInitialized(IReadOnlyCollection<RecipeDto> expected)
         {
             this.MockDomainServices.Setup(m => m.RunQuery(It.IsAny<GetAllRecipesQuery>())).Returns(expected);

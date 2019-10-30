@@ -61,5 +61,13 @@ namespace Food.Pages.Recipes
                 NavigationManager.NavigateTo($"recipes/edit/{command.Id}/{Success}", true);
             }
         }
+
+        public void Delete()
+        {
+            var command = new DeleteRecipeCommand(this.RecipeId.Value);
+            this.DomainServices.RunCommand(command);
+
+            NavigationManager.NavigateTo($"recipes");
+        }
     }
 }

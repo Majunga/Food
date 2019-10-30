@@ -11,6 +11,7 @@ namespace Service.Conversion
         public RecipeServiceMapper()
         {
             CreateMap<CreateRecipeCommand, Recipe>();
+            CreateMap<UpdateRecipeCommand, Recipe>();
             CreateMap<Recipe, RecipeDto>();
             CreateMap<RecipeDto, RecipeViewModel>();
             CreateMap<RecipeViewModel, CreateRecipeCommand>();

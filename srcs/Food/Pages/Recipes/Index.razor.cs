@@ -31,9 +31,16 @@ namespace Food.Pages.Recipes
             OrderBy(recipeViews, asc);
         }
 
-        public void GotoEditPage()
+        public void GotoEditPage(int? recipeId = null)
         {
-            NavigationManager.NavigateTo("recipes/edit");
+            if (recipeId.HasValue)
+            {
+                NavigationManager.NavigateTo($"recipes/edit/{recipeId}");
+            }
+            else
+            {
+                NavigationManager.NavigateTo("recipes/edit");
+            }
         }
 
         #region list ordering

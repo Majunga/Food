@@ -15,6 +15,7 @@ namespace Service.Conversion
             CreateMap<Recipe, RecipeDto>();
             CreateMap<RecipeDto, RecipeViewModel>();
             CreateMap<RecipeViewModel, CreateRecipeCommand>();
+            CreateMap<RecipeViewModel, UpdateRecipeCommand>();
         }
     }
 }

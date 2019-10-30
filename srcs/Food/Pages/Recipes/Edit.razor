@@ -1,7 +1,12 @@
 ﻿@page "/Recipes/Edit"
+@page "/Recipes/Edit/{RecipeId:int}"
+@page "/Recipes/Edit/{RecipeId:int}/{Success:bool}"
+
 @inherits EditBase
 <h3>@Title</h3>
-
+<div>
+    <h5 class="alert-success border-success">@CreatedSuccessfully</h5>
+</div>
 <EditForm Model="@Model" OnValidSubmit="@Save">
     <DataAnnotationsValidator />
     <ValidationSummary />

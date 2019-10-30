@@ -5,7 +5,7 @@
 <h3>Recipes</h3>
 
 
-<button class="btn btn-primary" @onclick="GotoEditPage">Create</button>
+<button class="btn btn-primary" @onclick="() => GotoEditPage()">Create</button>
 
 <Grid>
     <GridHeader>
@@ -18,6 +18,7 @@
             <tr>
                 <td>@recipe.Name</td>
                 <td>
+                    <button class="btn btn-primary" @onclick="() => GotoEditPage(recipe.Id)">Edit</button>
                 </td>
             </tr>
         }

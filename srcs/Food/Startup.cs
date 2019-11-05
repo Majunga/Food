@@ -14,6 +14,7 @@ using Food.IService;
 using Food.Service;
 using Majunga.RazorModal;
 using Service.Conversion;
+using Food.Dependencies;
 
 namespace Food
 {
@@ -51,6 +52,8 @@ namespace Food
             // Razor Components
             services.AddScoped<ModalService>();
             services.AddScoped<IModalService, ModalService>();
+
+            services.AddViewModels();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

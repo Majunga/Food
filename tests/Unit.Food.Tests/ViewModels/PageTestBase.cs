@@ -1,11 +1,9 @@
 ﻿using Common.Conversion;
 using Food.IService;
 using Majunga.RazorModal;
+using Microsoft.AspNetCore.Components;
 using Moq;
 using Service.Conversion;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Unit.Food.Tests.Pages
 {
@@ -15,6 +13,7 @@ namespace Unit.Food.Tests.Pages
         {
             this.MockModalService = new Mock<ModalService>();
             this.MockDomainServices = new Mock<IServices>();
+            this.MockNavigationManager = new Mock<NavigationManager>();
 
             var mapper = new ConversionConfiguration().MapperConfig.CreateMapper();
             this.Converter = new AutoMapperConversionService(mapper);
@@ -22,6 +21,7 @@ namespace Unit.Food.Tests.Pages
 
         public Mock<ModalService> MockModalService { get; private set; }
         public Mock<IServices> MockDomainServices { get; private set; }
+        public Mock<NavigationManager> MockNavigationManager { get; }
         public AutoMapperConversionService Converter { get; private set; }
 
         protected T Convert<T>(object source)
